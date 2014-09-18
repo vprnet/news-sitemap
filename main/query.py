@@ -35,7 +35,7 @@ def get_posts(tag_id):
 
         dow, day, month, year, time, tz = story['storyDate']['$text'].split(' ')
         month = datetime.strptime(month, "%b").strftime("%m")
-        post['datetime'] = "%s-%s-%sT%s%s" % (year, month, day, time, tz)
+        post['datetime'] = "%s-%s-%sT%s:%s" % (year, month, day, time, tz)
 
         tags = [tag['title']['$text'] for tag in story['parent']
             if tag['type'] == 'tag']
